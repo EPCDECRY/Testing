@@ -11,14 +11,14 @@
 
 <body>
     <div class="container">
-        <h1>Microsoft Mars Colonization</h1>
-        <h2>Tic-Tac-Toe</h2>
+        <h2>Microsoft Mars Colonization</h2>
+        <h3>Tic-Tac-Toe</h3>
         <div id=buttons>
             <button onclick="func3()">3 X 3</button>
             <button onclick="func4()">4 X 4</button>
         </div>
         <div class="play-area">
-          <img src="img\human.png" alt="human-player" id="human">
+          <img src="img/Player1.png" id="human">
 
           <h2 id="select-option">Start Playing...</h2>
 
@@ -71,11 +71,17 @@
                     </table>
 
                   </div>
-                  <img src="img\robot.png" alt="robo-player" id="robot">
+                  <img src="img/Player2.png" id="robot">
 
         </div>
 
         <h2 id="winner"></h2>
+        <div id = "pvp">
+          <button onclick="funcpvp()"> P v P </button>
+        </div>    
+        <div id = "pve">
+          <button onclick="funcpve()"> P v E </button>
+        </div>
         <button id="reset" onclick="reset_board()">RESET</button>
     </div>
     <!-- <script src="app.js"></script> -->

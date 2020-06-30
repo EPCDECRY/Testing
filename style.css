@@ -34,13 +34,13 @@ h2 {
 
 #human{
   width: 400px;
-  height: 350px;
+  height: auto;
   margin-right: auto;
 }
 
 #robot{
-  width: 430px;
-  height: 350px;
+  width: 400px;
+  height: auto;
   margin-left: auto;
 }
 
