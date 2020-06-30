@@ -25,13 +25,14 @@
         <div class="col" id="player1">
           <img src="img/Player1.png" id="human">
         </div>
-<!-- board column -->
-      <div class="col">
-        <div id=buttons>
+<!-- Board select-->
+        <div class="container1" id="b4last-col" style="margin-bottom: 3em;">
+          <div class="row" id=buttons>
             <button id="threexthree" onclick="func3()">3 X 3</button>
             <button id="fourxfour" onclick="func4()">4 X 4</button>
-        </div>
-
+          </div>
+        </div> 
+<!-- board column -->
         <div class="board">
           <h2 id="select-option">Start Playing...</h2>
           <div id="th">
@@ -83,7 +84,6 @@
             </table>
           </div>
         </div>
-      </div>
 <!-- player 2 column -->
         <div class="col">
           <img src="img/Player2.png" id="robot">
@@ -92,14 +92,13 @@
 
         <div class="row">
           <div class="col"><h2 id="winner"></h2></div>
-        </div>
-
+        </div>      
         <div class="row" id="last-col">
-          <div class="col" >
-    <button id = "pvp" onclick="funcpvp()" > P v P </button>
-    <button id = "pve" onclick="funcpve()"> P v E </button>
-  </div>
-  </div>
+          <div class="col">
+            <button id = "pvp" onclick="funcpvp()" > P v P </button>
+            <button id = "pve" onclick="funcpve()"> P v E </button>
+          </div>
+        </div>
 
   <div class="row">
     <div class="col"><button id="reset" onclick="reset_board()">RESET</button></div>
