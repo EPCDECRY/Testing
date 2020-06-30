@@ -3,23 +3,40 @@
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
+    <!-- <meta http-equiv="X-UA-Compatible" content="ie=edge" /> -->
     <title>Tic Tac Toe by EPCDECRY</title>
+    <link href="https://fonts.googleapis.com/css2?family=Piedra&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
     <div class="container">
-        <h1>Tic-Tac-Toe</h1>
-        <div id=buttons>
-            <button onclick="func3()">3 X 3</button>
-            <button onclick="func4()">4 X 4</button>
-        </div>
-        <div class="play-area">
-          <img src="img/Player1.png" id="human">
 
+<!-- Top heading row -->
+      <div class="row" id="heading">
+        <div class="col-12" ><h1>Tic-Tac-Toe</h1></div>
+      </div>
+
+<!-- body row -->
+        <div class="row" id="play-area">
+<!-- player1 column -->
+        <div class="col" id="player1">
+          <img src="img/Player1.png" id="human">
+        </div>
+<!-- board column -->
+        <div class="col">
+          <div id=buttons>
+              <button onclick="func3()">3 X 3</button>
+              <button onclick="func4()">4 X 4</button>
+          </div>
+
+          <div class="board">
+            
           <h2 id="select-option">Start Playing...</h2>
+
+
 
           <div id="th">
               <table id="three">
@@ -70,20 +87,29 @@
                     </table>
 
                   </div>
-                  <img src="img/Player2.png" id="robot">
-
+                    </div>
+        </div>
+<!-- player 2 column -->
+        <div class="col">
+          <img src="img/Player2.png" id="robot">
+        </div>
         </div>
 
-        <h2 id="winner"></h2>
-        <br>
-        <div id = "pvp">
-          <button onclick="funcpvp()"> P v P </button>
-        </div>    
-        <div id = "pve">
-          <button onclick="funcpve()"> P v E </button>
+        <div class="row">
+          <div class="col"><h2 id="winner"></h2></div>
         </div>
-        <button id="reset" onclick="reset_board()">RESET</button>
-    </div>
+
+        <div class="row" id="last-col">
+          <div class="col" >
+    <button id = "pvp" onclick="funcpvp()" > P v P </button>
+    <button id = "pve" onclick="funcpve()"> P v E </button>
+  </div>
+  </div>
+
+  <div class="row">
+    <div class="col"><button id="reset" onclick="reset_board()">RESET</button></div>
+  </div>
+
     <!-- <script src="app.js"></script> -->
     <script src="sketch.js"></script>
 </body>
