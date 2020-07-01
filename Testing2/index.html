@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en-us">
     <head>
-        <meat charset="UTF-8"/>
+        <meta charset="UTF-8"/>
         <title>Tic Tac Toe by EPCDECRY</title>
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
         <!-- Creating a Table -->
-        <table>
+        <table id=grid3x3>
             <tr>
                 <td class="cell" id="0"></td>
                 <td class="cell" id="1"></td>
@@ -27,10 +27,17 @@
         <div class="endgame">
             <div class="text"></div>
         </div>
-        <button onclick="startGame()">Replay</button>
-        <button onclick="twoplayers()">P v P</button>
-        <button onclick="AIplayer()">P v E</button>
-        <script src="src/script.js"?></script>
-        <script src="src/aiminimax.js"?></script>
+        <button onclick="startGame()" id="reset">Replay</button>
+        <div id="wrapButtons">
+            <ul id="buttons">
+                <li onclick="twoPlayers()" id=pvp>P v P</li>
+                <li onclick="aiPlayer()" id=pve>P v E</li>
+            </ul>
+        </div>
+        <!--
+        <button onclick="twoPlayers()">P v P</button>
+        <button onclick="aiPlayer()">P v E</button>-->
+        <script src="src/script.js"></script>
+        <script src="src/aiminimax.js"></script>
     </body>
 </html>

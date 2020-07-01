@@ -1,0 +1,44 @@
+<table id=grid4x4>
+            <tr>
+                <td class="cell" id="10"></td>
+                <td class="cell" id="11"></td>
+                <td class="cell" id="12"></td>
+                <td class="cell" id="13"></td>
+            </tr>
+            <tr>
+                <td class="cell" id="14"></td>
+                <td class="cell" id="15"></td>
+                <td class="cell" id="16"></td>
+                <td class="cell" id="17"></td>
+            </tr>
+            <tr>
+                <td class="cell" id="18"></td>
+                <td class="cell" id="19"></td>
+                <td class="cell" id="20"></td>
+                <td class="cell" id="21"></td>
+            </tr>
+            <tr>
+                <td class="cell" id="22"></td>
+                <td class="cell" id="23"></td>
+                <td class="cell" id="24"></td>
+                <td class="cell" id="25"></td>
+            </tr>
+</table>
+<ul id="buttons1">
+                <li onclick="grid4()" id=g4>4 x 4</li>
+                <li onclick="grid3()" id=g3>3 x 3</li>
+</ul>
+#buttons1 li{
+    float: right;
+    list-style: none;
+    text-align: center;
+    background-color: rgb(190, 231, 6);
+    width: 150px;
+    border-radius: 25px;
+    padding: 20px;
+    cursor: pointer;
+}
+
+#buttons1 li:hover{
+    background-color: #c212e6;
+}

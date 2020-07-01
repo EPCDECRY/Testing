@@ -15,32 +15,38 @@ const cells = document.querySelectorAll('.cell');
 let playtype;
 let human="X";
 let ai="O";
+let blocksPressed=0;
 
-function twoplayers(){
+function twoPlayers(){
   playtype=2;
+  turn="X";
+  document.getElementById("pve").style.backgroundColor="aquamarine";
+  document.getElementById("pvp").style.backgroundColor="#FF0000";
   startGame();
 }
 
-function AIplayer(){
+function aiPlayer(){
   playtype=1;
+  document.getElementById("pvp").style.backgroundColor="aquamarine";
+  document.getElementById("pve").style.backgroundColor="#FF0000";
   startGame();
 }
 
 function startGame(){
-    document.querySelector(".endgame").getElementsByClassName.display = "none";
-    origBoard = Array.from(Array(9).keys());
-    for(let i=0;i < cells.length;i++){
-        cells[i].innerText='';
-        cells[i].style.removeProperty('background-color');
-        cells[i].addEventListener('click',turnClick,false);
-    }
+  blocksPressed = 0;
+  document.querySelector(".endgame").getElementsByClassName.display = "none";
+  origBoard = Array.from(Array(9).keys());
+  for(let i=0;i < cells.length;i++){
+      cells[i].innerText='';
+      cells[i].style.removeProperty('background-color');
+      cells[i].addEventListener('click',turnClick,false);
+  }
 }
 
 function turnClick(square){
   if(playtype==2){
-  if(typeof origBoard[square.target.id] == 'number'){
     click(square.target.id,turn);
-    checkTIE();
+    checkTie();
     if(turn == 'X') {
         turn="O"
     }
@@ -48,24 +54,21 @@ function turnClick(square){
         turn="X"
     }
   }
-}
   else{
-    if(typeof origBoard[square.target.id] == 'number'){
-      click(square.target.id,human);
-      checkTIE();
-      click(bestSPOT(),ai);
-
-    }
+    click(square.target.id,human);
+    checkTie();
+    click(bestSPOT(),ai);
     console.log("ai");
   }
-
-
 }
 
 function click(squareID,player){
+    blocksPressed++;
+    console.log(player+" pressed "+squareID);
     origBoard[squareID] = player;
     document.getElementById(squareID).innerText = player;
     document.getElementById(squareID).cursor= "not-allowed";
+    cells[squareID].removeEventListener('click',turnClick,false);
     let gameWon = checkEndgame(origBoard,player);
     if(gameWon) gameOver(gameWon)
 }
@@ -86,20 +89,23 @@ function gameOver(gameWon){
     for(let index of winCombos[gameWon.index]){
         document.getElementById(index).style.backgroundColor="red";
     }
+    console.log(gameWon.player+" Won the game");
     for( let i=0;i<cells.length;i++ ){
         cells[i].removeEventListener('click',turnClick,false);
     }
+    blocksPressed = -1;
 }
 
 function emptySquares(){
   return origBoard.filter(s => typeof s=='number');
 }
 
-function checkTIE(){
-  if(emptySquares().length==0){
-    for(let i=0; i<cells.length;i++){
-    cells[i].style.backgroundColor = 'blue';
-    cells[i].removeEventListener('click',turnClick,false);
+function checkTie(){
+  console.log("Tie Check = "+ (blocksPressed > 8));
+  if((blocksPressed > 8)){
+    for( let i=0;i<cells.length;i++ ){
+      document.getElementById(i).style.backgroundColor="Green";
+    }
   }
-}
+  return (blocksPressed > 8);
 }

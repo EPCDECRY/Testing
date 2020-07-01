@@ -31,3 +31,36 @@ table tr td:first-child{
 table tr td:last-child{
     border-right: 0;
 }
+
+#wrapButtons{
+    margin-top: 350px;
+    position: absolute;
+    left: 50%;
+    margin-left: -220px;
+}
+
+#reset{
+    position: absolute;
+    top: 500px;
+    left: 50%;
+    margin-left: -75px;
+    text-align: center;
+    background-color: #f10707;
+    width: 150px;
+    border-radius: 25px;
+    margin-top: inherit;
+    padding: 20px;
+    cursor: pointer;
+}
+
+#buttons li{
+    float: left;
+    list-style: none;
+    text-align: center;
+    background-color: aquamarine;
+    width: 150px;
+    border-radius: 25px;
+    margin-top: inherit;
+    padding: 20px;
+    cursor: pointer;
+}
