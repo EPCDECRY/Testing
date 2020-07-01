@@ -1,5 +1,5 @@
 let origBoard;
-const winCombos = [ 
+const winCombos = [
     [0,1,2],
     [3,4,5],
     [6,7,8],
@@ -11,7 +11,20 @@ const winCombos = [
 ]
 let turn = "X"
 const cells = document.querySelectorAll('.cell');
-startGame();
+
+let playtype;
+let human="X";
+let ai="O";
+
+function twoplayers(){
+  playtype=2;
+  startGame();
+}
+
+function AIplayer(){
+  playtype=1;
+  startGame();
+}
 
 function startGame(){
     document.querySelector(".endgame").getElementsByClassName.display = "none";
@@ -24,13 +37,27 @@ function startGame(){
 }
 
 function turnClick(square){
+  if(playtype==2){
+  if(typeof origBoard[square.target.id] == 'number'){
     click(square.target.id,turn);
+    checkTIE();
     if(turn == 'X') {
         turn="O"
     }
     else{
         turn="X"
     }
+  }
+}
+  else{
+    if(typeof origBoard[square.target.id] == 'number'){
+      click(square.target.id,human);
+      if(!checkTIE()) click(bestSPOT(),ai);
+    }
+    console.log("ai");
+  }
+
+
 }
 
 function click(squareID,player){
@@ -38,7 +65,7 @@ function click(squareID,player){
     document.getElementById(squareID).innerText = player;
     document.getElementById(squareID).cursor= "not-allowed";
     let gameWon = checkEndgame(origBoard,player);
-    if(gameWon) gameOver(gameWon) 
+    if(gameWon) gameOver(gameWon)
 }
 
 function checkEndgame(board, player){
@@ -60,4 +87,17 @@ function gameOver(gameWon){
     for( let i=0;i<cells.length;i++ ){
         cells[i].removeEventListener('click',turnClick,false);
     }
+}
+
+function emptySquares(){
+  return origBoard.filter(s => typeof s=='number');
+}
+
+function checkTIE(){
+  if(emptySquares().length==0){
+    for(let i=0; i<cells.length;i++){
+    cells[i].style.backgroundColor = 'blue';
+    cells[i].removeEventListener('click',turnClick,false)
+  }
+}
 }
