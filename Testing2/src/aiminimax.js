@@ -1,4 +1,4 @@
 
 function bestSPOT(){
-  console.log(origBoard);
+  return emptySquares()[0];
 }

@@ -52,7 +52,9 @@ function turnClick(square){
   else{
     if(typeof origBoard[square.target.id] == 'number'){
       click(square.target.id,human);
-      if(!checkTIE()) click(bestSPOT(),ai);
+      checkTIE();
+      click(bestSPOT(),ai);
+
     }
     console.log("ai");
   }
@@ -97,7 +99,7 @@ function checkTIE(){
   if(emptySquares().length==0){
     for(let i=0; i<cells.length;i++){
     cells[i].style.backgroundColor = 'blue';
-    cells[i].removeEventListener('click',turnClick,false)
+    cells[i].removeEventListener('click',turnClick,false);
   }
 }
 }
