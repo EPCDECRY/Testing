@@ -94,7 +94,8 @@ h2 {
   font-size: 3rem;
   font-weight: bold;
   border: 4px solid white;
-  transition: background 0.2s ease-in-out;
+  color:white;
+  text-align: center;
 }
 
 .block:hover {
@@ -114,28 +115,20 @@ h2 {
   background: #0ff30f;
 }
 
-#block_0,
-#block_1,
-#block_2 {
+#three tr:first-child td {
   border-top: none;
 }
 
-#block_0,
-#block_3,
-#block_6 {
-  border-left: none;
+#three tr:last-child td {
+	border-bottom: 0;
 }
 
-#block_6,
-#block_7,
-#block_8 {
-  border-bottom: none;
+#three tr td:first-child {
+	border-left: 0;
 }
 
-#block_2,
-#block_5,
-#block_8 {
-  border-right: none;
+#three tr td:last-child {
+	border-right: 0;
 }
 
 #fo{
@@ -157,38 +150,30 @@ h2 {
   transition: background 0.2s ease-in-out;
 }
 
-#b0,
-#b1,
-#b2,
-#b3 {
+#four tr:first-child td {
   border-top: none;
 }
 
-#b0,
-#b4,
-#b8,
-#b12 {
-  border-left: none;
+#four tr:last-child td {
+	border-bottom: 0;
 }
 
-#b12,
-#b13,
-#b14,
-#b15 {
-  border-bottom: none;
+#four tr td:first-child {
+	border-left: 0;
 }
 
-#b3,
-#b7,
-#b11,
-#b15 {
-  border-right: none;
+#four tr td:last-child {
+	border-right: 0;
 }
+
+
 
 .cell:hover {
   cursor: pointer;
   background: #0ff30f;
 }
+
+
 
 #last-col{
   padding-top: 20px;
@@ -211,6 +196,11 @@ button:hover {
   background: green;
   color: white;
 }
+
+#pvp,#pve{
+  display: none;
+}
+
 
 #threexthree{
   margin-right: 20px;
