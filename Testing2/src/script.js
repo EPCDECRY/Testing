@@ -17,18 +17,22 @@ let human="X";
 let ai="O";
 let blocksPressed=0;
 
-function twoPlayers(){
+
+
+function twoPlayers3x3(){
   playtype=2;
   turn="X";
-  document.getElementById("pve").style.backgroundColor="aquamarine";
-  document.getElementById("pvp").style.backgroundColor="#FF0000";
+  document.getElementById("pve3x3").style.backgroundColor="aquamarine";
+  document.getElementById("pvp3x3").style.backgroundColor="#FF0000";
+
   startGame();
 }
 
-function aiPlayer(){
+function aiPlayer3x3(){
   playtype=1;
-  document.getElementById("pvp").style.backgroundColor="aquamarine";
-  document.getElementById("pve").style.backgroundColor="#FF0000";
+  document.getElementById("pvp3x3").style.backgroundColor="aquamarine";
+  document.getElementById("pve3x3").style.backgroundColor="#FF0000";
+  
   startGame();
 }
 

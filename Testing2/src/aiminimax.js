@@ -5,7 +5,7 @@ function bestSPOT(){
 
 
 
-function MiniMax(board, player) {
+function MiniMax(board,player) {
 	var availSpots = emptySquares();
 
 	if (checkEndgame(board, human)) {
@@ -25,8 +25,9 @@ function MiniMax(board, player) {
 			var result = MiniMax(board, human);
 			move.score = result.score;
 		} else {
-			var result = MiniMax(board, ai);
+			var result = MiniMax(board,ai);
 			move.score = result.score;
+
 		}
 
 		board[availSpots[i]] = move.index;
@@ -40,8 +41,10 @@ function MiniMax(board, player) {
 		for(var i = 0; i < moves.length; i++) {
 			if (moves[i].score > bestScore) {
 				bestScore = moves[i].score;
+
 				bestMove = i;
 			}
+
 		}
 	} else {
 		var bestScore = Infinity;
@@ -50,6 +53,7 @@ function MiniMax(board, player) {
 				bestScore = moves[i].score;
 				bestMove = i;
 			}
+      
 		}
 	}
 

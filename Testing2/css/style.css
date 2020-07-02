@@ -1,5 +1,20 @@
-td{
+#header{
+    height: 100px;
+    padding-left: 45%;
+}
+
+#row1{
+    height: 400px;
+}
+
+#row2,#row3{
+    height: 100px;
+}
+
+/* 3x3 */
+.cell{
     border: 2px solid #333;
+    border-radius: 10px;
     height: 100px;
     width: 100px;
     text-align: center;
@@ -9,12 +24,46 @@ td{
     cursor: pointer;
 }
 
+/* 4x4 */
+.block{
+    border: 2px solid #333;
+    border-radius: 10px;
+    height: 80px;
+    width: 80px;
+    text-align: center;
+    vertical-align: middle;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 70px;
+    cursor: pointer;
+}
+
+#grid3x3{
+    padding-top: 20px;
+    padding-left: 40%;
+}
+
+#grid4x4{
+
+    padding-top: 20px;
+    padding-left: 40%;
+}
+
 table{
     border-collapse: collapse;
     position: absolute;
-    left: 50%;
-    margin-left: -155px;
-    top: 50px;
+    /* left: 50%; */
+    /* margin-left: -155px; */
+    /* top: 50px; */
+}
+
+.cell:hover{
+    cursor: pointer;
+    background-color: #f5f5f5;
+}
+
+.block:hover{
+    cursor: pointer;
+    background-color: #f5f5f5;
 }
 
 table tr:first-child td{
@@ -33,23 +82,26 @@ table tr td:last-child{
 }
 
 #wrapButtons{
-    margin-top: 350px;
-    position: absolute;
+  position: absolute;
+  padding-left: 31%;
+    /* margin-top: 350px;
     left: 50%;
-    margin-left: -220px;
+    margin-left: -220px; */
 }
 
+
 #reset{
+    /*
+    margin-left: -75px; */
+    left: 45%;
     position: absolute;
-    top: 500px;
-    left: 50%;
-    margin-left: -75px;
     text-align: center;
     background-color: #f10707;
     width: 150px;
     border-radius: 25px;
-    margin-top: inherit;
-    padding: 20px;
+    padding: 10px;
+    /* margin-top: inherit;
+    padding: 20px; */
     cursor: pointer;
 }
 
@@ -60,7 +112,7 @@ table tr td:last-child{
     background-color: aquamarine;
     width: 150px;
     border-radius: 25px;
-    margin-top: inherit;
-    padding: 20px;
+    /* margin-top: inherit; */
+    padding: 10px;
     cursor: pointer;
 }
