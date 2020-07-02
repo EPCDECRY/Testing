@@ -32,13 +32,13 @@ function aiPlayer3x3(){
   playtype=1;
   document.getElementById("pvp3x3").style.backgroundColor="aquamarine";
   document.getElementById("pve3x3").style.backgroundColor="#FF0000";
-  
+
   startGame();
 }
 
 function startGame(){
   blocksPressed = 0;
-  document.querySelector(".endgame").getElementsByClassName.display = "none";
+  // document.querySelector(".endgame").getElementsByClassName.display = "none";
   origBoard = Array.from(Array(9).keys());
   for(let i=0;i < cells.length;i++){
       cells[i].innerText='';

@@ -17,7 +17,7 @@
 
 <!-- row1....................................................................... -->
       <div class="row ">
-              <div class="col-6" id="row1">
+              <div class="col-12" id="row1">
                 <!-- Creating a Table 3x3 -->
                     <div id=grid3x3>
                         <table>
@@ -38,9 +38,31 @@
                               </tr>
                         </table>
                     </div>
-                </div>
+              </div>
+        </div>
+                <!-- buttons -->
+<!-- row2.......................................................................-->
+      <div class="row">
+              <div class="col-6" id="row2">
+                    <div id="wrapButtons">
+                        <ul id="buttons">
+                  <!-- li for 3x3 -->
+                          <li onclick="twoPlayers3x3()" id=pvp3x3>P v P</li>
+                          <li onclick="aiPlayer3x3()" id=pve3x3>P v E</li>
+                        </ul>
+                  </div>
+              </div>
+      </div>
+<!-- row3.......................................................................-->
+      <div class="row">
+        <div class="col-12" id="row3">
+              <button onclick="" id="reset">Replay</button>
+        </div>
+      </div>
+<!-- row4.......................................................................-->
                     <!-- Creating table of 4x4 -->
-                <div class="col-6" id="row1">
+      <div class="row">
+                <div class="col-12" id="row4">
                     <div id=grid4x4>
                         <table>
                               <tr>
@@ -70,25 +92,15 @@
                         </table>
                     </div>
                 </div>
-                    <div class="endgame">
+                    <!-- <div class="endgame">
                           <div class="text"></div>
-                    </div>
+                    </div> -->
               </div>
-      </div>
 
-<!-- row2....................................................................... -->
-        <div class="row">
-          <!-- buttons -->
-              <div class="col-6" id="row2">
-                    <div id="wrapButtons">
-                        <ul id="buttons">
-                      <!-- li for 3x3 -->
-                            <li onclick="twoPlayers3x3()" id=pvp3x3>P v P</li>
-                            <li onclick="aiPlayer3x3()" id=pve3x3>P v E</li>
-                          </ul>
-                    </div>
-              </div>
-              <div class="col-6" id="row2">
+
+<!-- row5....................................................................... -->
+      <div class="row">
+              <div class="col-12" id="row5">
                     <div id="wrapButtons">
                         <ul id="buttons">
                       <!-- li for 4x4 -->
@@ -99,20 +111,17 @@
               </div>
         </div>
 
-<!-- row3....................................................................... -->
+<!-- row6....................................................................... -->
         <div class="row">
-              <div class="col-6" id="row3">
+              <div class="col-12" id="row6">
                     <button onclick="startGame()" id="reset">Replay</button>
-              </div>
-              <div class="col-6" id="row3">
-                    <button onclick="" id="reset">Replay</button>
               </div>
         </div>
 
         <!--
         <button onclick="twoPlayers()">P v P</button>
         <button onclick="aiPlayer()">P v E</button>-->
-        
+
 <!-- javascript files.......................................................................-->
         <script src="src/script.js"></script>
         <script src="src/fourxfour.js"></script>

@@ -3,13 +3,15 @@
     padding-left: 45%;
 }
 
-#row1{
+#row1,#row4{
     height: 400px;
 }
 
-#row2,#row3{
+#row2,#row3,#row5,#row6{
     height: 100px;
-}
+  }
+
+
 
 /* 3x3 */
 .cell{
@@ -83,7 +85,7 @@ table tr td:last-child{
 
 #wrapButtons{
   position: absolute;
-  padding-left: 31%;
+  
     /* margin-top: 350px;
     left: 50%;
     margin-left: -220px; */
