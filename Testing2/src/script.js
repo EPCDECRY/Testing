@@ -21,10 +21,8 @@ let blocksPressed=0;
 
 function twoPlayers3x3(){
   playtype=2;
-  turn="X";
   document.getElementById("pve3x3").style.backgroundColor="aquamarine";
   document.getElementById("pvp3x3").style.backgroundColor="#FF0000";
-
   startGame();
 }
 
@@ -32,12 +30,12 @@ function aiPlayer3x3(){
   playtype=1;
   document.getElementById("pvp3x3").style.backgroundColor="aquamarine";
   document.getElementById("pve3x3").style.backgroundColor="#FF0000";
-
   startGame();
 }
 
 function startGame(){
   blocksPressed = 0;
+  turn="X";
   // document.querySelector(".endgame").getElementsByClassName.display = "none";
   origBoard = Array.from(Array(9).keys());
   for(let i=0;i < cells.length;i++){
