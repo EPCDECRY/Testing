@@ -85,12 +85,12 @@ table tr td:last-child{
 
 #wrapButtons{
   position: absolute;
-  
+  padding-left: 50%;
+  margin-left: -220px;
     /* margin-top: 350px;
     left: 50%;
     margin-left: -220px; */
 }
-
 
 #reset{
     /*
