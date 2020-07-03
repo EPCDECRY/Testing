@@ -13,15 +13,26 @@ const winCombos4 = [
 ]
 let turn4 = "X"
 const block = document.querySelectorAll('.block');
-
+let player14,player24,tie4;
 let playtype4;
 let blocksPressed4=0;
+
+function updateScore4(){
+    if(playtype4 == 2)
+      document.getElementById("score4").innerHTML="Player1: "+player14+"    Tie: "+tie4+"  Player2: "+player24;
+    else
+      document.getElementById("score4").innerHTML="Player1: "+player14+"    Tie: "+tie4+"  Computer: "+player24;
+  }
 
 function twoPlayers4x4(){
     playtype4=2;
     turn4="X";
     document.getElementById("pve4x4").style.backgroundColor="aquamarine";
     document.getElementById("pvp4x4").style.backgroundColor="#FF0000";
+    player14=0;
+    player24=0;
+    tie4=0;
+    updateScore4();
     startGame4();
 }
 
@@ -29,6 +40,10 @@ function aiPlayer4x4(){
     playtype4=1;
     document.getElementById("pvp4x4").style.backgroundColor="aquamarine";
     document.getElementById("pve4x4").style.backgroundColor="#FF0000";
+    player14=0;
+    player24=0;
+    tie4=0;
+    updateScore4();
     startGame4();
 }
 
@@ -59,7 +74,6 @@ function turnClick4(square){
         click4(square.target.id,human);
         click4(bestSPOT4(),ai);
         checkTie4();
-        
         console.log("ai");
       }
 }
@@ -97,6 +111,11 @@ function gameOver4(gameWon4){
     for( let i=0;i<block.length;i++ ){
         block[i].removeEventListener('click',turnClick4,false);
     }
+    if(gameWon4.player == "X")
+        player14++;
+    else
+        player24++;
+    updateScore4();
     blocksPressed4 = -1;
 }
 
@@ -111,6 +130,8 @@ function checkTie4(){
       for( let i=9;i<block.length+9;i++ ){
         document.getElementById(i).style.backgroundColor="Green";
       }
+      tie4++;
+      updateScore4();
     }
     return (blocksPressed4 > 15);
 }

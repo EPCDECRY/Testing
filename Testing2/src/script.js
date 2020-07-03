@@ -16,13 +16,23 @@ let playtype;
 let human="X";
 let ai="O";
 let blocksPressed=0;
+let player1,player2,tie;
 
-
+function updateScore(){
+  if(playtype == 2)
+    document.getElementById("score3").innerHTML="Player1: "+player1+"    Tie: "+tie+"  Player2: "+player2;
+  else
+    document.getElementById("score3").innerHTML="Player1: "+player1+"    Tie: "+tie+"  Computer: "+player2;
+}
 
 function twoPlayers3x3(){
   playtype=2;
   document.getElementById("pve3x3").style.backgroundColor="aquamarine";
   document.getElementById("pvp3x3").style.backgroundColor="#FF0000";
+  player1=0;
+  player2=0;
+  tie=0;
+  updateScore();
   startGame3();
 }
 
@@ -30,6 +40,10 @@ function aiPlayer3x3(){
   playtype=1;
   document.getElementById("pvp3x3").style.backgroundColor="aquamarine";
   document.getElementById("pve3x3").style.backgroundColor="#FF0000";
+  player1=0;
+  player2=0;
+  tie=0;
+  updateScore();
   startGame3();
 }
 
@@ -59,8 +73,8 @@ function turnClick(square){
   }
   else{
     click(square.target.id,human);
-    click(bestSPOT3(),ai);
     checkTie();
+    click(bestSPOT3(),ai);
     console.log("ai");
   }
 }
@@ -96,6 +110,11 @@ function gameOver(gameWon){
     for( let i=0;i<cells.length;i++ ){
         cells[i].removeEventListener('click',turnClick,false);
     }
+    if(gameWon.player == "X")
+        player1++;
+    else
+        player2++;
+    updateScore();
     blocksPressed = -1;
 }
 
@@ -109,6 +128,8 @@ function checkTie(){
     for( let i=0;i<cells.length;i++ ){
       document.getElementById(i).style.backgroundColor="Green";
     }
+    tie++;
+    updateScore();
   }
   return (blocksPressed > 8);
 }
