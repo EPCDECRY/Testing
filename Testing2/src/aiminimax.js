@@ -1,9 +1,9 @@
 
-function bestSPOT(){
-  return MiniMax(origBoard, ai).index;
+function bestSPOT3(){
+  return MiniMax3(origBoard, ai).index;
 }
 
-function MiniMax(board,player) {
+function MiniMax3(board,player) {
 	let availSpots = emptySquares();
 	let moves = [];
 	if (checkEndgame(board, human)) {
@@ -20,11 +20,11 @@ function MiniMax(board,player) {
 		move.index = board[availSpots[i]];
 		board[availSpots[i]] = player;
 		if (player == ai) {
-			let result = MiniMax(board, human);
+			let result = MiniMax3(board, human);
 			move.score = result.score;
 		}
 		else {
-			let result = MiniMax(board,ai);
+			let result = MiniMax3(board,ai);
 			move.score = result.score;
 		}
 		board[availSpots[i]] = move.index;

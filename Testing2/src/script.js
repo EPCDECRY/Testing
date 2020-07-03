@@ -23,17 +23,17 @@ function twoPlayers3x3(){
   playtype=2;
   document.getElementById("pve3x3").style.backgroundColor="aquamarine";
   document.getElementById("pvp3x3").style.backgroundColor="#FF0000";
-  startGame();
+  startGame3();
 }
 
 function aiPlayer3x3(){
   playtype=1;
   document.getElementById("pvp3x3").style.backgroundColor="aquamarine";
   document.getElementById("pve3x3").style.backgroundColor="#FF0000";
-  startGame();
+  startGame3();
 }
 
-function startGame(){
+function startGame3(){
   blocksPressed = 0;
   turn="X";
   // document.querySelector(".endgame").getElementsByClassName.display = "none";
@@ -46,6 +46,7 @@ function startGame(){
 }
 
 function turnClick(square){
+    console.log(origBoard);
   if(playtype==2){
     click(square.target.id,turn);
     checkTie();
@@ -58,8 +59,8 @@ function turnClick(square){
   }
   else{
     click(square.target.id,human);
+    click(bestSPOT3(),ai);
     checkTie();
-    click(bestSPOT(),ai);
     console.log("ai");
   }
 }

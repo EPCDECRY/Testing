@@ -1,15 +1,15 @@
 let origBoard1;
 const winCombos4 = [
-    [9,10,11,12],
-    [13,14,15,16],
-    [17,18,19,20],
-    [21,22,23,24],
-    [9,13,17,21],
-    [10,14,18,22],
-    [11,15,19,23],
-    [12,16,20,24],
-    [9,14,19,24],
-    [12,15,18,21]
+    [0,1,2,3],
+    [4,5,6,7],
+    [8,9,10,11],
+    [12,13,14,15],
+    [0,4,8,12],
+    [1,5,9,13],
+    [2,6,10,14],
+    [3,7,11,15],
+    [0,5,10,15],
+    [3,6,9,12]
 ]
 let turn4 = "X"
 const block = document.querySelectorAll('.block');
@@ -44,6 +44,7 @@ function startGame4(){
 }
 
 function turnClick4(square){
+    console.log(origBoard1);
     if(playtype4==2){
         click4(square.target.id,turn4);
         checkTie4();
@@ -56,8 +57,9 @@ function turnClick4(square){
       }
       else{
         click4(square.target.id,human);
-        checkTie4();
         click4(bestSPOT4(),ai);
+        checkTie4();
+        
         console.log("ai");
       }
 }
@@ -65,7 +67,7 @@ function turnClick4(square){
 function click4(squareID,player){
     blocksPressed4++;
     console.log(player+" pressed "+squareID);
-    origBoard1[squareID] = player;
+    origBoard1[squareID-9] = player;
     document.getElementById(squareID).innerText = player;
     document.getElementById(squareID).cursor= "not-allowed";
     block[squareID-9].removeEventListener('click',turnClick4,false);
@@ -89,7 +91,7 @@ function gameOver4(gameWon4){
     console.log("win combo");
     for(let index of winCombos4[gameWon4.index]){
         console.log(index);
-        document.getElementById(index).style.backgroundColor="red";
+        document.getElementById(index+9).style.backgroundColor="red";
     }
     console.log(gameWon4.player+" Won the game");
     for( let i=0;i<block.length;i++ ){
@@ -103,7 +105,8 @@ function emptySquares4(){
 }
  
 function checkTie4(){
-    console.log("Tie Check = "+ (blocksPressed4 > 8));
+    console.log("Tie Check = "+ (blocksPressed4 > 15));
+
     if((blocksPressed4 > 15)){
       for( let i=9;i<block.length+9;i++ ){
         document.getElementById(i).style.backgroundColor="Green";
