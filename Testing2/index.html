@@ -8,7 +8,7 @@
     </head>
 
     <body>
-        <!-- heading row -->
+<!-- heading row.......................................................................-->
         <div class="row">
             <div class="col-12" id="header">
                 <h1>Tic-Tac-Toe</h1>
@@ -39,7 +39,7 @@
                 </div>
             </div>
         </div>
-                <!-- buttons -->
+                
 <!-- row7.......................................................................-->
         <div class="row">
             <div class="col-12" id="row7">
@@ -51,7 +51,7 @@
             <div class="col-12" id="row2">
                 <div id="wrapButtons">
                     <ul id="buttons">
-                    <!-- li for 3x3 -->
+                    <!-- li for 3x3 buttons-->
                         <li onclick="twoPlayers3x3()" id=pvp3x3>P v P</li>
                         <li onclick="aiPlayer3x3()" id=pve3x3>P v E</li>
                     </ul>
@@ -98,27 +98,6 @@
                 </div>
             </div>
         </div>
-
-
-<!-- row5....................................................................... -->
-        <div class="row">
-            <div class="col-12" id="row5">
-                <div id="wrapButtons">
-                    <ul id="buttons">
-                    <!-- li for 4x4 -->
-                        <li onclick="twoPlayers4x4()" id=pvp4x4>P v P</li>
-                        <li onclick="aiPlayer4x4()" id=pve4x4>P v E</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-<!-- row6....................................................................... -->
-        <div class="row">
-            <div class="col" id="row6">
-                <button onclick="startGame4()" id="reset">Replay</button>
-            </div>
-        </div>
 <!-- row8.......................................................................-->
         <div class="row">
             <div class="col-12" id="row8">
@@ -126,10 +105,34 @@
             </div>
         </div>   
 
+<!-- row5....................................................................... -->
+        <div class="row">
+            <div class="col-12" id="row5">
+                <div id="wrapButtons">
+                    <ul id="buttons">
+                    <!-- li for 4x4 buttons -->
+                        <li onclick="twoPlayers4x4()" id=pvp4x4>P v P</li>
+                        <li onclick="aiPlayer4x4()" id=pve4x4>P v E</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        
+
+<!-- row6....................................................................... -->
+        <div class="row">
+            <div class="col" id="row6">
+                <button onclick="startGame4()" id="reset">Replay</button>
+            </div>
+        </div>
+
+        
+
 <!-- javascript files.......................................................................-->
         <script src="src/script.js"></script>
         <script src="src/fourxfour.js"></script>
-        <script src="src/aiminimax.js"></script>
+        <script src="src/aiminimax3.js"></script>
         <script src="src/aiminimax4.js"></script>
     </body>
 
