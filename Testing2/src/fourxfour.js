@@ -18,12 +18,12 @@ let playtype4;
 let blocksPressed4=0;
 let gameWon4;
 
-//ViewTimeline3x3 variables..............................................................................
+//ViewTimeline4x4 variables..............................................................................
 let playerMoves4;
 let timer4;
 let p;
 let symbols='X';
-//viewTimeline3x3 function.................................................................................
+//viewTimeline4x4 function.................................................................................
 function viewTimeline4x4(){
   p=0;
   symbols='X';
