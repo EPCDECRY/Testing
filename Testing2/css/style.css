@@ -94,6 +94,14 @@ table tr td:last-child{
     margin-left: -220px; */
 }
 
+#timeline3{
+    display: none;
+}
+
+#timeline4{
+    display: none;
+}
+
 #reset{
     /*
     margin-left: -75px; */

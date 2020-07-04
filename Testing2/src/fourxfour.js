@@ -16,7 +16,64 @@ const block = document.querySelectorAll('.block');
 let player14,player24,tie4;
 let playtype4;
 let blocksPressed4=0;
+let gameWon4;
 
+//ViewTimeline3x3 variables..............................................................................
+let playerMoves4;
+let timer4;
+let p;
+let symbols='X';
+//viewTimeline3x3 function.................................................................................
+function viewTimeline4x4(){
+  p=0;
+  symbols='X';
+  document.getElementById("pve4x4").style.backgroundColor="aquamarine";
+  document.getElementById("timeline4").style.backgroundColor="#FF0000";
+  document.getElementById("pvp4x4").style.backgroundColor="aquamarine";
+  for(let i=0;i < block.length;i++){
+    block[i].innerText='';
+    block[i].style.removeProperty('background-color');
+    
+   }
+   timer4 = setInterval(showMoves4x4, 500);
+   console.log(playerMoves4);
+}
+
+function showMoves4x4(){
+    block[playerMoves4[p]-9].innerHTML=symbols;
+    if(symbols=='X'){
+        symbols='O';
+    }else{
+        symbols='X';
+    }
+    p++;
+    if(p==playerMoves4.length)
+    {
+        console.log("Gameover");
+        complete();
+        if(checkTie4()){
+            console.log("You ended up in Tie");
+        }
+        else{
+            for(let index of winCombos4[gameWon4.index]){
+                document.getElementById(index+9).style.backgroundColor="red";
+            }
+            console.log("Won");
+        }
+        document.getElementById("timeline4").style.backgroundColor="aquamarine";
+        return;
+    }
+}
+
+function complete(){
+    clearInterval(timer4);
+    timer4 = null;
+}
+
+
+
+
+//updateScore4 function.................................................................................
 function updateScore4(){
     if(playtype4 == 2)
       document.getElementById("score4").innerHTML="Player1: "+player14+"    Tie: "+tie4+"  Player2: "+player24;
@@ -24,11 +81,13 @@ function updateScore4(){
       document.getElementById("score4").innerHTML="Player1: "+player14+"    Tie: "+tie4+"  Computer: "+player24;
   }
 
+//twoPlayers4x4 function.................................................................................
 function twoPlayers4x4(){
     playtype4=2;
     turn4="X";
     document.getElementById("pve4x4").style.backgroundColor="aquamarine";
     document.getElementById("pvp4x4").style.backgroundColor="#FF0000";
+    document.getElementById("timeline4").style.backgroundColor="aquamarine";
     document.getElementById("pvp4x4").innerHTML = "New Game";
     document.getElementById("pve4x4").innerHTML = "P v E";
     player14=0;
@@ -38,10 +97,12 @@ function twoPlayers4x4(){
     startGame4();
 }
 
+//aiPlayer4x4 function.................................................................................
 function aiPlayer4x4(){
     playtype4=1;
     document.getElementById("pvp4x4").style.backgroundColor="aquamarine";
     document.getElementById("pve4x4").style.backgroundColor="#FF0000";
+    document.getElementById("timeline4").style.backgroundColor="aquamarine";
     document.getElementById("pve4x4").innerHTML = "New game";
     document.getElementById("pvp4x4").innerHTML = "P v P";
     player14=0;
@@ -51,9 +112,12 @@ function aiPlayer4x4(){
     startGame4();
 }
 
+//startGame4 function.................................................................................
 function startGame4(){
     blocksPressed4 = 0;
     turn4="X";
+    playerMoves4=[];
+    document.getElementById("timeline4").style.display = "none"; 
     origBoard1 = Array.from(Array(16).keys());
     for(let i=0;i < block.length;i++){
         block[i].innerText='';
@@ -62,6 +126,7 @@ function startGame4(){
     }
 }
 
+//turnClick4 function.................................................................................
 function turnClick4(square){
     console.log(origBoard1);
     if(playtype4==2){
@@ -82,17 +147,20 @@ function turnClick4(square){
       }
 }
 
+//click4 function.................................................................................
 function click4(squareID,player){
     blocksPressed4++;
     console.log(player+" pressed "+squareID);
     origBoard1[squareID-9] = player;
+    playerMoves4.push(squareID);     //adding into playerMoves array
     document.getElementById(squareID).innerText = player;
     document.getElementById(squareID).cursor= "not-allowed";
     block[squareID-9].removeEventListener('click',turnClick4,false);
-    let gameWon4 = checkEndgame4(origBoard1,player);
+    gameWon4 = checkEndgame4(origBoard1,player);
     if(gameWon4) gameOver4(gameWon4)
 }
 
+//checkEndgame4 function.................................................................................
 function checkEndgame4(board, player){
     let plays4 = board.reduce((a,e,i) => (e == player) ? a.concat(i) : a,[]);
     let gameWon4 = null;
@@ -105,6 +173,7 @@ function checkEndgame4(board, player){
     return gameWon4;
 }
 
+//gameOver4 function.................................................................................
 function gameOver4(gameWon4){
     console.log("win combo");
     for(let index of winCombos4[gameWon4.index]){
@@ -120,13 +189,17 @@ function gameOver4(gameWon4){
     else
         player24++;
     updateScore4();
+    document.getElementById("timeline4").style.display = "block";// displaying view timeline
     blocksPressed4 = -1;
 }
 
+
+//emptySquares4 function.................................................................................
 function emptySquares4(){
     return origBoard1.filter(s => typeof s=='number');
 }
  
+//checkTie4 function.................................................................................
 function checkTie4(){
     console.log("Tie Check = "+ (blocksPressed4 > 15));
 
@@ -136,6 +209,7 @@ function checkTie4(){
       }
       tie4++;
       updateScore4();
+      document.getElementById("timeline4").style.display = "block";// displaying view timeline
     }
     return (blocksPressed4 > 15);
 }
