@@ -29,6 +29,8 @@ function twoPlayers3x3(){
   playtype=2;
   document.getElementById("pve3x3").style.backgroundColor="aquamarine";
   document.getElementById("pvp3x3").style.backgroundColor="#FF0000";
+  document.getElementById("pvp3x3").innerHTML = "New Game";
+  document.getElementById("pve3x3").innerHTML = "P v E";
   player1=0;
   player2=0;
   tie=0;
@@ -40,6 +42,8 @@ function aiPlayer3x3(){
   playtype=1;
   document.getElementById("pvp3x3").style.backgroundColor="aquamarine";
   document.getElementById("pve3x3").style.backgroundColor="#FF0000";
+  document.getElementById("pve3x3").innerHTML = "New game";
+  document.getElementById("pvp3x3").innerHTML = "P v P";
   player1=0;
   player2=0;
   tie=0;

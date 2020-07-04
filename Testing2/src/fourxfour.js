@@ -29,6 +29,8 @@ function twoPlayers4x4(){
     turn4="X";
     document.getElementById("pve4x4").style.backgroundColor="aquamarine";
     document.getElementById("pvp4x4").style.backgroundColor="#FF0000";
+    document.getElementById("pvp4x4").innerHTML = "New Game";
+    document.getElementById("pve4x4").innerHTML = "P v E";
     player14=0;
     player24=0;
     tie4=0;
@@ -40,6 +42,8 @@ function aiPlayer4x4(){
     playtype4=1;
     document.getElementById("pvp4x4").style.backgroundColor="aquamarine";
     document.getElementById("pve4x4").style.backgroundColor="#FF0000";
+    document.getElementById("pve4x4").innerHTML = "New game";
+    document.getElementById("pvp4x4").innerHTML = "P v P";
     player14=0;
     player24=0;
     tie4=0;
