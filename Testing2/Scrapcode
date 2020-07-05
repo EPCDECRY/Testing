@@ -42,3 +42,22 @@
 #buttons1 li:hover{
     background-color: #c212e6;
 }
+
+if(guided = 1){
+    guided = 0;
+    document.getElementById("guided3x3").style.backgroundColor="red";
+    document.getElementById("guided3x3").innerText= "Guided : OFF";
+    console.log("Guided OFF");
+  }
+  else{
+    guided = 1;
+    document.getElementById("guided3x3").innerText= "Guided : ON";
+    document.getElementById("guided3x3").style.backgroundColor="green";
+    console.log("Guided ON");
+  }
+  /*else{
+    guided = 0;
+    document.getElementById("guided3x3").style.backgroundColor="red";
+    document.getElementById("guided3x3").innerText= "Guided : OFF";
+    console.log("Guided OFF");
+  }*/

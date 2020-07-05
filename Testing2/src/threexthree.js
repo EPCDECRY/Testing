@@ -18,6 +18,7 @@ let ai="O";
 let blocksPressed=0;
 let player1,player2,tie;
 let gameWon;
+let guided=0;
 
 //ViewTimeline3x3 variables..............................................................................
 let playerMoves;
@@ -72,6 +73,14 @@ function completes(){
     timer = null;
 }
 
+//guidedOnClick function...............................................................................
+function guided3x3(){
+  guided = 1;
+  document.getElementById("guided3x3").innerText= "Guided : ON";
+  document.getElementById("guided3x3").style.backgroundColor="green";
+  console.log("Guided ON");
+}
+
 //updateScore function.................................................................................
 function updateScore(){
   if(playtype == 2)
@@ -83,10 +92,11 @@ function updateScore(){
 //twoPlayer3x3 function.................................................................................
 function twoPlayers3x3(){
   playtype=2;
+  document.getElementById("guided3x3").style.display="initial";
   document.getElementById("pve3x3").style.backgroundColor="aquamarine";
   document.getElementById("pvp3x3").style.backgroundColor="#FF0000";
   document.getElementById("timeline3").style.backgroundColor="aquamarine";
-  document.getElementById("pvp3x3").innerHTML = "New Game";
+  document.getElementById("pvp3x3").innerHTML = "Reset Scores";
   document.getElementById("pve3x3").innerHTML = "P v E";
   player1=0;
   player2=0;
@@ -98,10 +108,11 @@ function twoPlayers3x3(){
 //aiPlayer3x3 function.................................................................................
 function aiPlayer3x3(){
   playtype=1;
+  document.getElementById("guided3x3").style.display="initial";
   document.getElementById("pvp3x3").style.backgroundColor="aquamarine";
   document.getElementById("pve3x3").style.backgroundColor="#FF0000";
   document.getElementById("timeline3").style.backgroundColor="aquamarine";
-  document.getElementById("pve3x3").innerHTML = "New game";
+  document.getElementById("pve3x3").innerHTML = "Reset Scores";
   document.getElementById("pvp3x3").innerHTML = "P v P";
   player1=0;
   player2=0;
@@ -117,6 +128,10 @@ function startGame3(){
   playerMoves=[];
   document.getElementById("timeline3").style.display = "none"; //hidding view timeline
   // document.querySelector(".endgame").getElementsByClassName.display = "none";
+  guided = 0;
+  document.getElementById("guided3x3").style.backgroundColor="red";
+  document.getElementById("guided3x3").innerText= "Guided : OFF";
+  console.log("Guided OFF");
   origBoard = Array.from(Array(9).keys());
   for(let i=0;i < cells.length;i++){
       cells[i].innerText='';
@@ -125,9 +140,15 @@ function startGame3(){
   }
 }
 
+//highlight function.................................................................................
+function highlight(squareID){
+  console.log("Highlighted : "+ squareID);
+  document.getElementById(squareID).style.backgroundColor="#A9A9A9";
+}
+
 //turnClick function.................................................................................
 function turnClick(square){
-    console.log(origBoard);
+  console.log(origBoard);
   if(playtype==2){
     click(square.target.id,turn);
     checkTie();
@@ -137,10 +158,16 @@ function turnClick(square){
     else{
         turn="X"
     }
+    if(guided == 1)
+      highlight(bestSPOT3(turn));
   }
   else{
     click(square.target.id,human);
-    if(!checkTie())click(bestSPOT3(),ai);
+    if(!checkTie()){
+      click(bestSPOT3("O"),ai);
+      if(guided == 1)
+        highlight(bestSPOT3("X"));
+    }
     console.log("ai");
   }
 }
