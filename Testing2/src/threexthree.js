@@ -19,6 +19,7 @@ let blocksPressed=0;
 let player1,player2,tie;
 let gameWon;
 let guided=0;
+let timelineMode = 0;
 
 //ViewTimeline3x3 variables..............................................................................
 let playerMoves;
@@ -27,6 +28,7 @@ let k;
 let symbol='X';
 //viewTimeline3x3 function.................................................................................
 function viewTimeline3x3(){
+  timelineMode = 1;//switching on timelineMode so the scores are not upated
   k=0;
   symbol='X';
   document.getElementById("pve3x3").style.backgroundColor="aquamarine";
@@ -123,6 +125,7 @@ function aiPlayer3x3(){
 
 //startGame3 function.................................................................................
 function startGame3(){
+  timelineMode = 0;
   blocksPressed = 0;
   turn="X";
   playerMoves=[];
@@ -207,11 +210,13 @@ function gameOver(gameWon){
     for( let i=0;i<cells.length;i++ ){
         cells[i].removeEventListener('click',turnClick,false);
     }
-    if(gameWon.player == "X")
-        player1++;
-    else
-        player2++;
-    updateScore();
+    if(timelineMode == 0){
+      if(gameWon.player == "X")
+          player1++;
+      else
+          player2++;
+      updateScore();
+    }
     document.getElementById("timeline3").style.display = "block";// displaying view timeline
     blocksPressed = -1;
 }
@@ -228,8 +233,10 @@ function checkTie(){
     for( let i=0;i<cells.length;i++ ){
       document.getElementById(i).style.backgroundColor="Green";
     }
-    tie++;
-    updateScore();
+    if(timelineMode == 0){
+      tie++;
+      updateScore();
+    }
     document.getElementById("timeline3").style.display = "block";// displaying view timeline
   }
   return (blocksPressed > 8);
