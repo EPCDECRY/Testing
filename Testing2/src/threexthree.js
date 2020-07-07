@@ -80,6 +80,8 @@ function guided3x3(){
   guided = 1;
   document.getElementById("guided3x3").innerText= "Guided : ON";
   document.getElementById("guided3x3").style.backgroundColor="green";
+  document.getElementById("depthButtons").style.display="none";
+  document.getElementById("row9").style.height="0px";
   console.log("Guided ON");
 }
 
@@ -98,6 +100,8 @@ function twoPlayers3x3(){
   document.getElementById("pve3x3").style.backgroundColor="aquamarine";
   document.getElementById("pvp3x3").style.backgroundColor="#FF0000";
   document.getElementById("timeline3").style.backgroundColor="aquamarine";
+  document.getElementById("depthButtons").style.display="none";
+  document.getElementById("row9").style.height="0px";
   document.getElementById("pvp3x3").innerHTML = "Reset Scores";
   document.getElementById("pve3x3").innerHTML = "P v E";
   player1=0;
@@ -114,6 +118,8 @@ function aiPlayer3x3(){
   document.getElementById("pvp3x3").style.backgroundColor="aquamarine";
   document.getElementById("pve3x3").style.backgroundColor="#FF0000";
   document.getElementById("timeline3").style.backgroundColor="aquamarine";
+  document.getElementById("depthButtons").style.display="block";
+  document.getElementById("row9").style.height="100px";
   document.getElementById("pve3x3").innerHTML = "Reset Scores";
   document.getElementById("pvp3x3").innerHTML = "P v P";
   player1=0;

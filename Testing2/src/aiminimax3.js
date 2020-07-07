@@ -8,10 +8,10 @@ function bestSPOT3(playing){
 		humanMin = ai;
 		aiMin = human;
 	}
-	return MiniMax3(origBoard, aiMin).index;
+	return MiniMax3(origBoard, aiMin,-Infinity,+Infinity).index;
 }
 
-function MiniMax3(board,playerMin) {
+function MiniMax3(board,playerMin,alpha,beta) {
 	let availSpots = emptySquares();
 	let moves = [];
 	if (checkEndgame(board, humanMin)) {
@@ -28,11 +28,11 @@ function MiniMax3(board,playerMin) {
 		move.index = board[availSpots[i]];
 		board[availSpots[i]] = playerMin;
 		if (playerMin == aiMin) {
-			let result = MiniMax3(board, humanMin);
+			let result = MiniMax3(board, humanMin,alpha,beta);
 			move.score = result.score;
 		}
 		else {
-			let result = MiniMax3(board,aiMin);
+			let result = MiniMax3(board,aiMin,alpha,beta);
 			move.score = result.score;
 		}
 		board[availSpots[i]] = move.index;
@@ -46,6 +46,10 @@ function MiniMax3(board,playerMin) {
 			if (moves[i].score > bestScore) {
 				bestScore = moves[i].score;
 				bestMove = i;
+				alpha=bestScore;
+			}
+			if(alpha>=beta){
+				break;
 			}
 		}
 	} 
@@ -55,6 +59,10 @@ function MiniMax3(board,playerMin) {
 			if (moves[i].score < bestScore) {
 				bestScore = moves[i].score;
 				bestMove = i;
+				beta = bestScore;
+			}
+			if(alpha>=beta){
+				break;
 			}
 		}
 	}

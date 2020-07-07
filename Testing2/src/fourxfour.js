@@ -23,8 +23,10 @@ let playerMoves4;
 let timer4;
 let p;
 let symbols='X';
+let timelineMode4 = 0;
 //viewTimeline4x4 function.................................................................................
 function viewTimeline4x4(){
+  timelineMode4 = 1;
   p=0;
   symbols='X';
   document.getElementById("pve4x4").style.backgroundColor="aquamarine";
@@ -88,7 +90,7 @@ function twoPlayers4x4(){
     document.getElementById("pve4x4").style.backgroundColor="aquamarine";
     document.getElementById("pvp4x4").style.backgroundColor="#FF0000";
     document.getElementById("timeline4").style.backgroundColor="aquamarine";
-    document.getElementById("pvp4x4").innerHTML = "New Game";
+    document.getElementById("pvp4x4").innerHTML = "Reset Score";
     document.getElementById("pve4x4").innerHTML = "P v E";
     player14=0;
     player24=0;
@@ -103,7 +105,7 @@ function aiPlayer4x4(){
     document.getElementById("pvp4x4").style.backgroundColor="aquamarine";
     document.getElementById("pve4x4").style.backgroundColor="#FF0000";
     document.getElementById("timeline4").style.backgroundColor="aquamarine";
-    document.getElementById("pve4x4").innerHTML = "New game";
+    document.getElementById("pve4x4").innerHTML = "Reset Score";
     document.getElementById("pvp4x4").innerHTML = "P v P";
     player14=0;
     player24=0;
@@ -114,6 +116,7 @@ function aiPlayer4x4(){
 
 //startGame4 function.................................................................................
 function startGame4(){
+    timelineMode4 = 0;
     blocksPressed4 = 0;
     turn4="X";
     playerMoves4=[];
@@ -184,11 +187,13 @@ function gameOver4(gameWon4){
     for( let i=0;i<block.length;i++ ){
         block[i].removeEventListener('click',turnClick4,false);
     }
-    if(gameWon4.player == "X")
-        player14++;
-    else
-        player24++;
-    updateScore4();
+    if(timelineMode4 == 0){
+        if(gameWon4.player == "X")
+            player14++;
+        else
+            player24++;
+        updateScore4();
+    }
     document.getElementById("timeline4").style.display = "block";// displaying view timeline
     blocksPressed4 = -1;
 }
@@ -207,8 +212,10 @@ function checkTie4(){
       for( let i=9;i<block.length+9;i++ ){
         document.getElementById(i).style.backgroundColor="Green";
       }
-      tie4++;
-      updateScore4();
+      if(timelineMode4 == 0){
+        tie4++;
+        updateScore4();
+      }
       document.getElementById("timeline4").style.display = "block";// displaying view timeline
     }
     return (blocksPressed4 > 15);
