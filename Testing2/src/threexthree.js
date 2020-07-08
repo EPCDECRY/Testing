@@ -20,6 +20,8 @@ let player1,player2,tie;
 let gameWon;
 let guided=0;
 let timelineMode = 0;
+let highlightNo;
+let gameEnd=false;
 
 //ViewTimeline3x3 variables..............................................................................
 let playerMoves;
@@ -131,6 +133,7 @@ function aiPlayer3x3(){
 
 //startGame3 function.................................................................................
 function startGame3(){
+  gameEnd = false;
   timelineMode = 0;
   blocksPressed = 0;
   turn="X";
@@ -150,13 +153,23 @@ function startGame3(){
 }
 
 //highlight function.................................................................................
-function highlight(squareID){
+function highlight(squareID,move){
+  let color = "#B5651D"
+  if(move == "X")
+    color = "#A9A9A9"
+  highlightNo = squareID;
   console.log("Highlighted : "+ squareID);
-  document.getElementById(squareID).style.backgroundColor="#A9A9A9";
+  document.getElementById(squareID).style.backgroundColor=color;
+}
+
+function dehighlight(){
+  document.getElementById(highlightNo).style.backgroundColor=null;
 }
 
 //turnClick function.................................................................................
 function turnClick(square){
+  if(blocksPressed>0 && guided == 1)
+    dehighlight();
   console.log(origBoard);
   if(playtype==2){
     click(square.target.id,turn);
@@ -167,15 +180,20 @@ function turnClick(square){
     else{
         turn="X"
     }
-    if(guided == 1)
-      highlight(bestSPOT3(turn));
+    if(!gameEnd){
+      if(guided == 1)
+        highlight(bestSPOT3("X"),turn);
+    }
   }
   else{
     click(square.target.id,human);
-    if(!checkTie()){
+    checkTie();
+    if(!gameEnd){
       click(bestSPOT3("O"),ai);
+    }
+    if(!gameEnd){
       if(guided == 1)
-        highlight(bestSPOT3("X"));
+        highlight(bestSPOT3("X"),turn);
     }
     console.log("ai");
   }
@@ -223,6 +241,7 @@ function gameOver(gameWon){
           player2++;
       updateScore();
     }
+    gameEnd = true;
     document.getElementById("timeline3").style.display = "block";// displaying view timeline
     blocksPressed = -1;
 }
@@ -244,6 +263,7 @@ function checkTie(){
       updateScore();
     }
     document.getElementById("timeline3").style.display = "block";// displaying view timeline
+    gameEnd = true;
   }
   return (blocksPressed > 8);
 }
