@@ -9,6 +9,12 @@ const winCombos = [
     [0,4,8],
     [6,4,2]
 ]
+
+
+let colorX = "#FF9933";
+let colorO = "#50BFE6";
+let symb_color;
+
 let turn = "X"
 const cells = document.querySelectorAll('.cell');
 
@@ -28,8 +34,10 @@ let playerMoves;
 let timer;
 let k;
 let symbol='X';
+
 //viewTimeline3x3 function.................................................................................
 function viewTimeline3x3(){
+  symb_color = colorX;
   timelineMode = 1;//switching on timelineMode so the scores are not upated
   k=0;
   symbol='X';
@@ -47,11 +55,14 @@ function viewTimeline3x3(){
 }
 
 function showMoves3x3(){
+    cells[playerMoves[k]].style.color = symb_color;
     cells[playerMoves[k]].innerHTML=symbol;
     if(symbol=='X'){
         symbol='O';
+        symb_color = colorO;
     }else{
         symbol='X';
+        symb_color = colorX;
     }
     k++;
     if(k==playerMoves.length)
@@ -63,7 +74,7 @@ function showMoves3x3(){
         }
         else{
             for(let index of winCombos[gameWon.index]){
-                document.getElementById(index).style.backgroundColor="red";
+                document.getElementById(index).style.backgroundColor="#9C2542";
             }
             console.log("Won");
         }
@@ -81,7 +92,7 @@ function completes(){
 function guided3x3(){
   guided = 1;
   document.getElementById("guided3x3").innerText= "Guided : ON";
-  document.getElementById("guided3x3").style.backgroundColor="green";
+  document.getElementById("guided3x3").style.backgroundColor="#3AA655";
   document.getElementById("depthButtons").style.display="none";
   document.getElementById("row9").style.height="0px";
   console.log("Guided ON");
@@ -102,7 +113,7 @@ function twoPlayers3x3(){
   document.getElementById("pve3x3").style.backgroundColor="aquamarine";
   document.getElementById("pvp3x3").style.backgroundColor="#FF0000";
   document.getElementById("timeline3").style.backgroundColor="aquamarine";
-  document.getElementById("depthButtons").style.display="none";
+  document.getElementById("depth").style.display="none";
   document.getElementById("row9").style.height="0px";
   document.getElementById("pvp3x3").innerHTML = "Reset Scores";
   document.getElementById("pve3x3").innerHTML = "P v E";
@@ -120,7 +131,7 @@ function aiPlayer3x3(){
   document.getElementById("pvp3x3").style.backgroundColor="aquamarine";
   document.getElementById("pve3x3").style.backgroundColor="#FF0000";
   document.getElementById("timeline3").style.backgroundColor="aquamarine";
-  document.getElementById("depthButtons").style.display="block";
+  document.getElementById("depth").style.display="block";
   document.getElementById("row9").style.height="100px";
   document.getElementById("pve3x3").innerHTML = "Reset Scores";
   document.getElementById("pvp3x3").innerHTML = "P v P";
@@ -133,13 +144,13 @@ function aiPlayer3x3(){
 
 //startGame3 function.................................................................................
 function startGame3(){
+  symb_color = colorX;
   gameEnd = false;
   timelineMode = 0;
   blocksPressed = 0;
   turn="X";
   playerMoves=[];
   document.getElementById("timeline3").style.display = "none"; //hidding view timeline
-  // document.querySelector(".endgame").getElementsByClassName.display = "none";
   guided = 0;
   document.getElementById("guided3x3").style.backgroundColor="red";
   document.getElementById("guided3x3").innerText= "Guided : OFF";
@@ -154,9 +165,9 @@ function startGame3(){
 
 //highlight function.................................................................................
 function highlight(squareID,move){
-  let color = "#B5651D"
+  let color = "#5DADEC";
   if(move == "X")
-    color = "#A9A9A9"
+    color = "#FF7A00";
   highlightNo = squareID;
   console.log("Highlighted : "+ squareID);
   document.getElementById(squareID).style.backgroundColor=color;
@@ -175,10 +186,12 @@ function turnClick(square){
     click(square.target.id,turn);
     checkTie();
     if(turn == 'X') {
-        turn="O"
+        turn="O";
+        symb_color = colorO;
     }
     else{
-        turn="X"
+        turn="X";
+        symb_color = colorX;
     }
     if(!gameEnd){
       if(guided == 1)
@@ -186,9 +199,11 @@ function turnClick(square){
     }
   }
   else{
+    symb_color = colorX;
     click(square.target.id,human);
     checkTie();
     if(!gameEnd){
+      symb_color = colorO;
       click(bestSPOT3("O"),ai);
     }
     if(!gameEnd){
@@ -205,6 +220,7 @@ function click(squareID,player){
     console.log(player+" pressed "+squareID);
     origBoard[squareID] = player;
     playerMoves.push(squareID);     //adding into playerMoves array
+    document.getElementById(squareID).style.color = symb_color;
     document.getElementById(squareID).innerText = player;
     document.getElementById(squareID).cursor= "not-allowed";
     cells[squareID].removeEventListener('click',turnClick,false);
@@ -228,7 +244,7 @@ function checkEndgame(board, player){
 //gameOver function.................................................................................
 function gameOver(gameWon){
     for(let index of winCombos[gameWon.index]){
-        document.getElementById(index).style.backgroundColor="red";
+        document.getElementById(index).style.backgroundColor="#9C2542";
     }
     console.log(gameWon.player+" Won the game");
     for( let i=0;i<cells.length;i++ ){
@@ -256,7 +272,7 @@ function checkTie(){
   console.log("Tie Check = "+ (blocksPressed > 8));
   if((blocksPressed > 8)){
     for( let i=0;i<cells.length;i++ ){
-      document.getElementById(i).style.backgroundColor="Green";
+      document.getElementById(i).style.backgroundColor="#00755E";
     }
     if(timelineMode == 0){
       tie++;

@@ -1,4 +1,5 @@
 
+// To find Bestspot for 4x4
 function bestSPOT4(){
     return MiniMax4(origBoard1,0, ai).index+9;
   }
@@ -23,13 +24,12 @@ function heuristic(board){
     }else {
         return {score:0};
     }
-  
-  
-  
-  
+ 
 }
-  
-  function MiniMax4(board,depth, player) {
+
+
+// Minimax algorithm for 4x4
+function MiniMax4(board,depth, player) {
       let availSpots = emptySquares4();
       let moves = [];
       if (checkEndgame4(board, human)) {

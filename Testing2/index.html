@@ -11,15 +11,19 @@
 <!-- heading row.......................................................................-->
         <div class="row">
             <div class="col-12" id="header">
-                <h1>Tic-Tac-Toe</h1>
+                <h1>Tic - Tac - Toe</h1>
             </div>
         </div>
 
+
+<!-- Board3x3 Box -->
+<div class="board3x3">
 <!-- row1....................................................................... -->
         <div class="row ">
             <div class="col-12" id="row1">
                 <div id=grid3x3>
-                    <table>
+                    <h2>3 X 3</h2>
+                    <table id="table3">
                         <tr>
                             <td class="cell" id="0"></td>
                             <td class="cell" id="1"></td>
@@ -49,44 +53,45 @@
 <!-- row2.......................................................................-->
         <div class="row">
             <div class="col-12" id="row2">
-                <div id="wrapButtons">
-                    <ul id="buttons">
+                    <ul id="buttons3x3">
                     <!-- li for 3x3 buttons-->
                         <li onclick="twoPlayers3x3()" id=pvp3x3>P v P</li>
                         <li onclick="aiPlayer3x3()" id=pve3x3>P v E</li>
                         <li onclick="guided3x3()" id=guided3x3>Guided</li>
                         <li onclick="viewTimeline3x3()" id=timeline3>View Timeline</li>
                     </ul>
-                </div>
-              </div>
+            </div>
         </div>
 <!-- row9........................................................................-->
         <div class="row">
             <div class="col" id="row9">
-                <div id="depthButtons">
-                    <ul id="depth">
+                <ul id="depth">
                     <!-- Depth for 3x3 buttons-->
-                        <li onclick="" id=d1>1</li>
-                        <li onclick="" id=d2>2</li>
-                        <li onclick="" id=d3>3</li>
-                        <li onclick="" id=d4>4</li>
-                        <li onclick="" id=unlimited>unlimited</li>
-                    </ul>
-                </div>
+                        <li id=d1>1</li>
+                        <li id=d2>2</li>
+                        <li id=d3>3</li>
+                        <li id=d4>4</li>
+                        <li id=unlimited>unlimited</li>
+                </ul>
             </div>
         </div>
 <!-- row3.......................................................................-->
         <div class="row">
             <div class="col" id="row3">
-              <button onclick="startGame3()" id="reset">Replay</button>
+                    <div class="ResetButton"><button onclick="startGame3()" id="reset">Replay</button></div>
             </div>
         </div>
+</div>
+
+<!-- Board4x4 Box -->
+<div class="board4x4">
 <!-- row4.......................................................................-->
                     <!-- Creating table of 4x4 -->
         <div class="row">
             <div class="col-12" id="row4">
                 <div id=grid4x4>
-                    <table>
+                    <h2>4 X 4</h2>
+                    <table id="table4">
                         <tr>
                             <td class="block" id="9"></td>
                             <td class="block" id="10"></td>
@@ -125,14 +130,12 @@
 <!-- row5....................................................................... -->
         <div class="row">
             <div class="col-12" id="row5">
-                <div id="wrapButtons">
-                    <ul id="buttons">
+                    <ul id="buttons4x4">
                     <!-- li for 4x4 buttons -->
                         <li onclick="twoPlayers4x4()" id=pvp4x4>P v P</li>
                         <li onclick="aiPlayer4x4()" id=pve4x4>P v E</li>
                         <li onclick="viewTimeline4x4()" id=timeline4>View Timeline</li>
                     </ul>
-                </div>
             </div>
         </div>
 
@@ -141,11 +144,11 @@
 <!-- row6....................................................................... -->
         <div class="row">
             <div class="col" id="row6">
-                <button onclick="startGame4()" id="reset">Replay</button>
+                    <div class="ResetButton"><button onclick="startGame4()" id="reset">Replay</button></div>
             </div>
         </div>
 
-        
+</div>        
 
 <!-- javascript files.......................................................................-->
         <script src="src/threexthree.js"></script>
@@ -155,6 +158,8 @@
     </body>
 
     <footer>
+        <a href="">View On Github</a>
+        <p id="creators">Creators: Rohit & Rajendraprasath</p>
         &copy;EPCDECRY
     </footer>
 </html>

@@ -11,6 +11,8 @@ const winCombos4 = [
     [0,5,10,15],
     [3,6,9,12]
 ]
+
+
 let turn4 = "X"
 const block = document.querySelectorAll('.block');
 let player14,player24,tie4;
@@ -26,6 +28,7 @@ let symbols='X';
 let timelineMode4 = 0;
 //viewTimeline4x4 function.................................................................................
 function viewTimeline4x4(){
+  symb_color = colorX;
   timelineMode4 = 1;
   p=0;
   symbols='X';
@@ -42,11 +45,14 @@ function viewTimeline4x4(){
 }
 
 function showMoves4x4(){
+    block[playerMoves4[p]-9].style.color = symb_color;
     block[playerMoves4[p]-9].innerHTML=symbols;
     if(symbols=='X'){
         symbols='O';
+        symb_color = colorO;
     }else{
         symbols='X';
+        symb_color = colorX;
     }
     p++;
     if(p==playerMoves4.length)
@@ -58,7 +64,7 @@ function showMoves4x4(){
         }
         else{
             for(let index of winCombos4[gameWon4.index]){
-                document.getElementById(index+9).style.backgroundColor="red";
+                document.getElementById(index+9).style.backgroundColor="#9C2542";
             }
             console.log("Won");
         }
@@ -116,6 +122,7 @@ function aiPlayer4x4(){
 
 //startGame4 function.................................................................................
 function startGame4(){
+    symb_color = colorX;
     timelineMode4 = 0;
     blocksPressed4 = 0;
     turn4="X";
@@ -136,14 +143,18 @@ function turnClick4(square){
         click4(square.target.id,turn4);
         checkTie4();
         if(turn4 == 'X') {
-            turn4="O"
+            turn4="O";
+            symb_color = colorO;
         }
         else{
-            turn4="X"
+            turn4="X";
+            symb_color = colorX;
         }
       }
       else{
+        symb_color = colorX;
         click4(square.target.id,human);
+        symb_color = colorO;
         click4(bestSPOT4(),ai);
         checkTie4();
         console.log("ai");
@@ -156,6 +167,7 @@ function click4(squareID,player){
     console.log(player+" pressed "+squareID);
     origBoard1[squareID-9] = player;
     playerMoves4.push(squareID);     //adding into playerMoves array
+    document.getElementById(squareID).style.color = symb_color;
     document.getElementById(squareID).innerText = player;
     document.getElementById(squareID).cursor= "not-allowed";
     block[squareID-9].removeEventListener('click',turnClick4,false);
@@ -181,7 +193,7 @@ function gameOver4(gameWon4){
     console.log("win combo");
     for(let index of winCombos4[gameWon4.index]){
         console.log(index);
-        document.getElementById(index+9).style.backgroundColor="red";
+        document.getElementById(index+9).style.backgroundColor="#9C2542";
     }
     console.log(gameWon4.player+" Won the game");
     for( let i=0;i<block.length;i++ ){
@@ -210,7 +222,7 @@ function checkTie4(){
 
     if((blocksPressed4 > 15)){
       for( let i=9;i<block.length+9;i++ ){
-        document.getElementById(i).style.backgroundColor="Green";
+        document.getElementById(i).style.backgroundColor="#00755E";
       }
       if(timelineMode4 == 0){
         tie4++;
