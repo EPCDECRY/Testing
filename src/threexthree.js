@@ -93,7 +93,7 @@ function guided3x3(){
   guided = 1;
   document.getElementById("guided3x3").innerText= "Guided : ON";
   document.getElementById("guided3x3").style.backgroundColor="#3AA655";
-  document.getElementById("depthButtons").style.display="none";
+  document.getElementById("depth").style.display="none";
   document.getElementById("row9").style.height="0px";
   console.log("Guided ON");
 }
