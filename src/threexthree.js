@@ -109,11 +109,17 @@ function updateScore(){
 //twoPlayer3x3 function.................................................................................
 function twoPlayers3x3(){
   playtype=2;
+  depthLimit = Infinity;
   document.getElementById("guided3x3").style.display="initial";
   document.getElementById("pve3x3").style.backgroundColor="aquamarine";
   document.getElementById("pvp3x3").style.backgroundColor="#FF0000";
   document.getElementById("timeline3").style.backgroundColor="aquamarine";
   document.getElementById("depth").style.display="none";
+  document.getElementById("d1").style.backgroundColor="aquamarine";
+	document.getElementById("d2").style.backgroundColor="aquamarine";
+	document.getElementById("d3").style.backgroundColor="aquamarine";
+	document.getElementById("d4").style.backgroundColor="aquamarine";
+  document.getElementById("unlimited").style.backgroundColor="#FF0000";
   document.getElementById("row9").style.height="0px";
   document.getElementById("pvp3x3").innerHTML = "Reset Scores";
   document.getElementById("pve3x3").innerHTML = "P v E";

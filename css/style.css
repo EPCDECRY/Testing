@@ -251,13 +251,13 @@ table tr td:last-child{
 
 #depth{
     margin-top: 40px;
-    width:600px;
+    width:680px;
     margin-left: auto;
     margin-right: auto;
     display:none;
 }
 
-#depth li{
+#d1,#d2,#d3,#d4,#unlimited{
     font-family: 'Rock Salt', cursive;
     float: left;
     list-style: none;
@@ -266,6 +266,17 @@ table tr td:last-child{
     width: 100px;
     padding: 10px;
     cursor: pointer;
+}
+
+#d0{
+    float: left;
+    list-style: none;
+    text-align: center;
+    padding-right: 30px;
+    background-color: black;
+    color:yellow;
+    font-size: 25px;
+    font-family: 'Finger Paint', cursive;
 }
 
 #d1,#d2,#d3,#d4{
@@ -278,6 +289,7 @@ table tr td:last-child{
 }
 
 #unlimited{
+    background: #FF0000;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
 }
@@ -298,3 +310,59 @@ footer{
 footer >p{
     font-size: 20px;
 }
+
+
+/* Message boxes............................................. */
+.Message {
+    width:30%;
+    margin-top: 30px;
+    margin-left: 50px;
+    margin-right: 50px;
+    padding: 30px;
+    font-family: 'Nanum Brush Script', cursive;
+    font-size: 35px;
+    text-align: justify;
+    background-color: rgba(56, 55, 55, 0.61);
+    color: white;
+    position: absolute;
+    z-index: 10;
+    border-top-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    transition: 1s;
+  }
+
+.Message2 {
+    width:30%;
+    margin-top: 100px;
+    margin-left: 68%;
+    padding: 30px;
+    font-family: 'Nanum Brush Script', cursive;
+    font-size: 35px;
+    text-align: justify;
+    background-color: rgba(56, 55, 55, 0.61);
+    color: white;
+    position: absolute;
+    z-index: 10;
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    transition: 1s;
+}
+  
+  .closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 30px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.5s;
+  }
+  
+  .closebtn:hover {
+    color: red;
+  }
+
+  #important{
+      color: yellow;
+  }
