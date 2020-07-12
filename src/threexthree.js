@@ -109,8 +109,6 @@ function guided3x3(){
   guided = 1;
   document.getElementById("guided3x3").innerText= "Guided : ON";
   document.getElementById("guided3x3").style.backgroundColor="#3AA655";
-  document.getElementById("depth").style.display="none";
-  document.getElementById("row9").style.height="0px";
   console.log("Guided ON");
 }
 
@@ -180,11 +178,9 @@ function startGame3(){
   guided = 0;
   guidep1=0;
   guidep2=0;
-
   document.getElementById("guided3x3").style.backgroundColor="red";
   document.getElementById("guided3x3").innerText= "Guided : OFF";
   console.log("Guided OFF");
-
   document.getElementById("guidedp1").innerText= "Guided(P1) : OFF";
   document.getElementById("guidedp1").style.backgroundColor="aquamarine";
   document.getElementById("guidedp2").innerText= "Guided(P2) : OFF";
