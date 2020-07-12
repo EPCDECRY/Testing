@@ -254,7 +254,6 @@ function turnClick(square){
       if(guided == 1)
         highlight(bestSPOT3("X"),turn);
     }
-    console.log("ai");
   }
 }
 
@@ -287,23 +286,23 @@ function checkEndgame(board, player){
 
 //gameOver function.................................................................................
 function gameOver(gameWon){
-    for(let index of winCombos[gameWon.index]){
-        document.getElementById(index).style.backgroundColor="#9C2542";
-    }
-    console.log(gameWon.player+" Won the game");
-    for( let i=0;i<cells.length;i++ ){
-        cells[i].removeEventListener('click',turnClick,false);
-    }
-    if(timelineMode == 0){
-      if(gameWon.player == "X")
-          player1++;
-      else
-          player2++;
-      updateScore();
-    }
-    gameEnd = true;
-    document.getElementById("timeline3").style.display = "block";// displaying view timeline
-    blocksPressed = -1;
+  for(let index of winCombos[gameWon.index]){
+      document.getElementById(index).style.backgroundColor="#9C2542";
+  }
+  console.log(gameWon.player+" Won the game");
+  for( let i=0;i<cells.length;i++ ){
+      cells[i].removeEventListener('click',turnClick,false);
+  }
+  if(timelineMode == 0){
+    if(gameWon.player == "X")
+      player1++;
+    else
+      player2++;
+    updateScore();
+  }
+  gameEnd = true;
+  document.getElementById("timeline3").style.display = "block";// displaying view timeline
+  blocksPressed = -1;
 }
 
 //emptySquares function.................................................................................

@@ -1,4 +1,31 @@
 let depthLimit=Infinity;
+const nearWinCombos = [
+	[0,1],
+	[0,2],
+	[1,2],
+	[3,4],
+	[4,5],
+	[3,5],
+	[6,7],
+	[7,8],
+	[6,8],
+	[0,3],
+	[3,6],
+	[0,6],
+	[1,4],
+	[7,4],
+	[1,7],
+	[2,5],
+	[5,8],
+	[2,8],
+	[0,4],
+	[4,8],
+	[0,8],
+	[6,4],
+	[2,4],
+	[2,6]
+]
+const winReq = [2,1,0,5,3,4,8,6,7,6,0,3,7,1,4,8,2,5,8,0,4,2,6,4]
 
 document.getElementById("d1").addEventListener("click", function(){
 	document.getElementById("d1").style.backgroundColor="#FF0000";
@@ -77,10 +104,8 @@ function heuristicfunc(board,depth){
 			return {score: -10+depth};
 		}
 	}
-  
   return {score: 0};
 }
-
 
 // To find Bestspot for 3x3
 function bestSPOT3(playing){
@@ -92,9 +117,25 @@ function bestSPOT3(playing){
 		humanMin = ai;
 		aiMin = human;
 	}
-	return MiniMax3(origBoard, 0, aiMin,-Infinity,+Infinity).index;
+	nearWin = checkFinal(origBoard,aiMin);
+	if(nearWin && depthLimit >= 4) 
+		return nearWin;
+	else
+		return MiniMax3(origBoard, 0, aiMin,-Infinity,+Infinity).index;
 }
 
+//finalmove
+function checkFinal(board,player){
+	let nearWinPositions=null;	
+	let playsF = board.reduce((a,e,i) => (e == player) ? a.concat(i) : a,[]);
+	for(let [index,win] of nearWinCombos.entries()){
+        if(win.every(elem => playsF.indexOf(elem)>-1)){
+			if(typeof board[winReq[index]]=='number') 
+				nearWinPositions=winReq[index];
+        }
+	}
+	return nearWinPositions;
+}
 
 // MiniMax algorithm for 3x3
 function MiniMax3(board, depth, playerMin, alpha, beta) {
@@ -127,7 +168,6 @@ function MiniMax3(board, depth, playerMin, alpha, beta) {
 		board[availSpots[i]] = move.index;
 		moves.push(move);
 	}
-
 	let bestMove;
 	if(playerMin === aiMin) {
 		let bestScore = -Infinity;
