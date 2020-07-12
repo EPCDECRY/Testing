@@ -182,6 +182,14 @@ table tr td:last-child{
     background-color: red;
 }
 
+#guidedp1{
+    display: none;
+}
+
+#guidedp2{
+    display: none;
+}
+
 #timeline4{
     display: none;
 }
@@ -207,7 +215,29 @@ table tr td:last-child{
     cursor: pointer;
 }
 
+#guidedp1p2 li{
+    color:black;
+    font-family: 'Rock Salt', cursive;
+    float: left;
+    list-style: none;
+    text-align: center;
+    background-color: aquamarine;
+    width: 200px;
+    border-radius: 25px;
+    border:5px solid black;
+    padding: 10px;
+    cursor: pointer;
+}
+
+#guidedp1p2{
+    width:450px;
+    height: 54px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 #buttons3x3 li{
+    color:black;
     font-family: 'Rock Salt', cursive;
     float: left;
     list-style: none;
@@ -228,6 +258,7 @@ table tr td:last-child{
 }
 
 #buttons4x4 li{
+    color:black;
     font-family: 'Rock Salt', cursive;
     float: left;
     list-style: none;
@@ -251,7 +282,7 @@ table tr td:last-child{
 
 #depth{
     margin-top: 40px;
-    width:680px;
+    width:800px;
     margin-left: auto;
     margin-right: auto;
     display:none;
@@ -263,7 +294,7 @@ table tr td:last-child{
     list-style: none;
     text-align: center;
     background-color: aquamarine;
-    width: 100px;
+    width: 102px;
     padding: 10px;
     cursor: pointer;
 }

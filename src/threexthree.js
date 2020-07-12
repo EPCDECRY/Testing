@@ -88,6 +88,22 @@ function completes(){
     timer = null;
 }
 
+//P v P guided function...............................................................................
+let guidep1=0;
+let guidep2=0;
+function guidedp1(){
+  guidep1 = 1;
+  document.getElementById("guidedp1").innerText= "Guided (P1) : ON";
+  document.getElementById("guidedp1").style.backgroundColor="#3AA655";
+  console.log(guidep1);
+}
+function guidedp2(){
+  guidep2 = 1;
+  document.getElementById("guidedp2").innerText= "Guided (P2) : ON";
+  document.getElementById("guidedp2").style.backgroundColor="#3AA655";
+  console.log(guidep2);
+}
+
 //guidedOnClick function...............................................................................
 function guided3x3(){
   guided = 1;
@@ -110,7 +126,9 @@ function updateScore(){
 function twoPlayers3x3(){
   playtype=2;
   depthLimit = Infinity;
-  document.getElementById("guided3x3").style.display="initial";
+  document.getElementById("guided3x3").style.display="none";
+  document.getElementById("guidedp1").style.display="block";
+  document.getElementById("guidedp2").style.display="block";
   document.getElementById("pve3x3").style.backgroundColor="aquamarine";
   document.getElementById("pvp3x3").style.backgroundColor="#FF0000";
   document.getElementById("timeline3").style.backgroundColor="aquamarine";
@@ -134,6 +152,8 @@ function twoPlayers3x3(){
 function aiPlayer3x3(){
   playtype=1;
   document.getElementById("guided3x3").style.display="initial";
+  document.getElementById("guidedp1").style.display="none";
+  document.getElementById("guidedp2").style.display="none";
   document.getElementById("pvp3x3").style.backgroundColor="aquamarine";
   document.getElementById("pve3x3").style.backgroundColor="#FF0000";
   document.getElementById("timeline3").style.backgroundColor="aquamarine";
@@ -158,9 +178,18 @@ function startGame3(){
   playerMoves=[];
   document.getElementById("timeline3").style.display = "none"; //hidding view timeline
   guided = 0;
+  guidep1=0;
+  guidep2=0;
+
   document.getElementById("guided3x3").style.backgroundColor="red";
   document.getElementById("guided3x3").innerText= "Guided : OFF";
   console.log("Guided OFF");
+
+  document.getElementById("guidedp1").innerText= "Guided(P1) : OFF";
+  document.getElementById("guidedp1").style.backgroundColor="aquamarine";
+  document.getElementById("guidedp2").innerText= "Guided(P2) : OFF";
+  document.getElementById("guidedp2").style.backgroundColor="aquamarine";
+
   origBoard = Array.from(Array(9).keys());
   for(let i=0;i < cells.length;i++){
       cells[i].innerText='';
@@ -185,25 +214,34 @@ function dehighlight(){
 
 //turnClick function.................................................................................
 function turnClick(square){
-  if(blocksPressed>0 && guided == 1)
+  if(blocksPressed>0 && (guided == 1 || guidep2==1))
+    dehighlight();
+  else if(blocksPressed>1 && guidep1==1)
     dehighlight();
   console.log(origBoard);
+
   if(playtype==2){
     click(square.target.id,turn);
     checkTie();
     if(turn == 'X') {
         turn="O";
         symb_color = colorO;
+        if(!gameEnd){
+          if(guidep2 == 1){
+            highlight(bestSPOT3("O"),turn);}
+        }
     }
     else{
         turn="X";
         symb_color = colorX;
+        if(!gameEnd){
+          if(guidep1 == 1 && blocksPressed>1){
+            highlight(bestSPOT3("X"),turn);}
+        }
     }
-    if(!gameEnd){
-      if(guided == 1)
-        highlight(bestSPOT3("X"),turn);
-    }
+   
   }
+
   else{
     symb_color = colorX;
     click(square.target.id,human);
